@@ -12,7 +12,7 @@ pipeline {
     stages {
         stage('SCM checkout'){
             steps {
-		git "https://github.com/vistasunil/devopsIQ.git"
+		git "https://github.com/saikrishnaponduri/devopsIQ.git"
             }
 	}
 	stage('Remove dockers'){
@@ -22,13 +22,13 @@ pipeline {
 	}
 	stage('Build'){
 	    steps {
-		    sh "sudo docker build /home/ubuntu/jenkins/workspace/${JOB_NAME} -t vistasunil/devopsdemo"
+		    sh "sudo docker build /home/ubuntu/jenkins/workspace/${JOB_NAME} -t saikrishnaponduri/devopsdemo"
 	   }
 	}
 	stage('Docker Push'){
 		steps {
-		    sh "sudo docker login --username vistasunil --password ${dockerpass}"
-                    sh "sudo docker push vistasunil/devopsdemo:latest"
+		    sh "sudo docker login --username saikrishnaponduri --password ${dockerpass}"
+                    sh "sudo docker push saikrishnaponduri/devopsdemo:latest"
 	        }
 	}
 	stage('Configure servers with Docker and deploy website') {
