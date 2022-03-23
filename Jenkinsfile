@@ -22,7 +22,7 @@ pipeline {
 	}
 	stage('Build'){
 	    steps {
-		    sh "sudo docker build /home/ubuntu/jenkins/workspace/mypipeline -t saikrishnaponduri/devopsdemo"
+		    sh "sudo docker build /home/ubuntu/jenkins/workspace/${JOB_NAME} -t saikrishnaponduri/devopsdemo"
 	   }
 	}
 	stage('Docker Push'){
