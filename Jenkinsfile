@@ -7,6 +7,7 @@ pipeline {
     parameters {
     	string(name: 'serverIP', defaultValue: 'None', description: 'Enter Server IP ')
 	string(name: 'servername', defaultValue: 'None', description: 'Enter Ansible slave name ')
+	string(name: 'JOB_NAME', defaultValue: 'None', description: 'Enter job name ')
 	password(name: 'dockerpass', description: 'Enter docker login password ')	    
     }
     stages {
@@ -22,7 +23,7 @@ pipeline {
 	}
 	stage('Build'){
 	    steps {
-		    sh "sudo docker build /home/ubuntu/jenkins/workspace/mypipeline -t saikrishnaponduri/devopsdemo"
+		    sh "sudo docker build /home/ubuntu/jenkins/workspace/${JOB_NAME} -t saikrishnaponduri/devopsdemo"
 	   }
 	}
 	stage('Docker Push'){
